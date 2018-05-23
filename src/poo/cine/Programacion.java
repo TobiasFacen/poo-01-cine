@@ -36,7 +36,8 @@ public class Programacion {
      * @param fechaHoraCreada
      * @param funciones 
      */
-    public Programacion(Date fechaInicio, Date fechaFin, Date fechaHoraCreada, List<Funcion> funciones) {
+    public Programacion(Date fechaInicio, Date fechaFin, Date fechaHoraCreada, 
+            List<Funcion> funciones) {
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.fechaHoraCreada = fechaHoraCreada;
@@ -135,7 +136,9 @@ public class Programacion {
 
     @Override
     public String toString() {
-        return "Programacion{" + "fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + ", fechaHoraCreada=" + fechaHoraCreada + ", funciones=" + funciones + '}';
+        return "Programacion{" + "fechaInicio=" + fechaInicio + ", fechaFin=" + 
+                fechaFin + ", fechaHoraCreada=" + fechaHoraCreada + 
+                ", funciones=" + funciones + "}";
     }
     
     

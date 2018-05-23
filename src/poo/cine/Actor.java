@@ -37,7 +37,8 @@ public class Actor {
         this.sexo = sexo;
     }
     
-    //A continuación se listan todos los métodos de seteo de cada atributo de la clase.
+    //A continuación se listan todos los métodos de seteo de cada atributo 
+    //de la clase.
     public boolean isAnimado() {
         return animado;
     }

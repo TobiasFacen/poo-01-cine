@@ -37,7 +37,9 @@ public class HorarioFuncion {
      * @param horaPrimeraFuncion
      * @param horaUltimaFuncion 
      */
-    public HorarioFuncion(int diaDeSemana, int duracionIntervalo, int duracionPublicidad, boolean esTrasnoche, Date horaPrimeraFuncion, Date horaUltimaFuncion) {
+    public HorarioFuncion(int diaDeSemana, int duracionIntervalo, 
+            int duracionPublicidad, boolean esTrasnoche, 
+            Date horaPrimeraFuncion, Date horaUltimaFuncion) {
         this.diaDeSemana = diaDeSemana;
         this.duracionIntervalo = duracionIntervalo;
         this.duracionPublicidad = duracionPublicidad;
@@ -144,12 +146,17 @@ public class HorarioFuncion {
     public String toString() {
         // TODO implementar
         StringBuilder sb = new StringBuilder();
-        sb.append("Los horarios para el día: ").append(obtenerDescripcionDia()).append("son: ");
-        sb.append("Duración del Intervalo: ").append(duracionIntervalo).append("\n");
-        sb.append("Duración de la Publicidad: ").append(duracionPublicidad).append("\n");
+        sb.append("Los horarios para el día: ").append(obtenerDescripcionDia())
+                .append("son: ");
+        sb.append("Duración del Intervalo: ").append(duracionIntervalo)
+                .append("\n");
+        sb.append("Duración de la Publicidad: ").append(duracionPublicidad)
+                .append("\n");
         sb.append("Acepta Trasnoche: ").append(esTrasnoche).append("\n");
-        sb.append("Horario Primera Función: ").append(horaPrimeraFuncion).append("\n");
-        sb.append("Horario Última Función: ").append(horaUltimaFuncion).append("\n");        
+        sb.append("Horario Primera Función: ").append(horaPrimeraFuncion)
+                .append("\n");
+        sb.append("Horario Última Función: ").append(horaUltimaFuncion)
+                .append("\n");        
         return sb.toString();
     }
 }

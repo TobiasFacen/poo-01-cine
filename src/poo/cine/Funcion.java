@@ -31,7 +31,8 @@ public class Funcion {
     }
     
     /**
-     * Este constructor no incluye los atributos referenciales de la clase Funcion
+     * Este constructor no incluye los atributos referenciales de la clase
+     * Funcion
      * 
      * @param diaSemana
      * @param duracion
@@ -41,7 +42,8 @@ public class Funcion {
      * @param pelicula
      * @param sala 
      */
-    public Funcion(int diaSemana, int duracion, Date horaInicio, int numero, Pelicula pelicula, Sala sala) {
+    public Funcion(int diaSemana, int duracion, Date horaInicio, int numero, 
+            Pelicula pelicula, Sala sala) {
         this.diaSemana = diaSemana;
         this.duracion = duracion;
         this.horaInicio = horaInicio;

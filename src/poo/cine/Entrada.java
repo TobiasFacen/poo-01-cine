@@ -35,7 +35,8 @@ public class Entrada {
      * @param precioCobrado
      * @param ticketNro 
      */
-    public Entrada(Date fechaHoraFuncion, Date fechaHoraVenta, Funcion funcion, BigDecimal precioCobrado, int ticketNro) {
+    public Entrada(Date fechaHoraFuncion, Date fechaHoraVenta, 
+            Funcion funcion, BigDecimal precioCobrado, int ticketNro) {
         this.fechaHoraFuncion = fechaHoraFuncion;
         this.fechaHoraVenta = fechaHoraVenta;
         this.funcion = funcion;

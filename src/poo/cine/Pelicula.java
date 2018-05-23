@@ -38,7 +38,8 @@ public class Pelicula {
     }
         
     /**
-     * Este constructor no incluye los atributos referenciales de la clase Pelicula
+     * Este constructor no incluye los atributos referenciales de la clase 
+     * Pelicula
      * 
      * @param anioEstreno
      * @param disponible
@@ -46,7 +47,8 @@ public class Pelicula {
      * @param nombre
      * @param tituloOriginal 
      */
-    public Pelicula(int anioEstreno, boolean disponible, int duracion, String nombre, String tituloOriginal) {
+    public Pelicula(int anioEstreno, boolean disponible, int duracion, 
+            String nombre, String tituloOriginal) {
         this.anioEstreno = anioEstreno;
         this.disponible = disponible;
         this.duracion = duracion;
@@ -72,7 +74,10 @@ public class Pelicula {
      * @param genero
      * @param calificacion 
      */
-    public Pelicula(int anioEstreno, boolean disponible, int duracion, String nombre, String tituloOriginal, PaisDeOrigen paisDeOrigen, List<Personaje> personajes, List<Funcion> funciones, Genero genero, Calificacion calificacion) {
+    public Pelicula(int anioEstreno, boolean disponible, int duracion, 
+            String nombre, String tituloOriginal, PaisDeOrigen paisDeOrigen, 
+            List<Personaje> personajes, List<Funcion> funciones, Genero genero, 
+            Calificacion calificacion) {
         this.anioEstreno = anioEstreno;
         this.disponible = disponible;
         this.duracion = duracion;
@@ -224,7 +229,7 @@ public class Pelicula {
 
     @Override
     public String toString() {
-        return nombre; //To change body of generated methods, choose Tools | Templates.
+        return nombre; 
     }
     
 }
