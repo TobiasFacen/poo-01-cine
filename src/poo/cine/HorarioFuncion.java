@@ -10,7 +10,7 @@ import java.util.Date;
 
 /**
  *
- * @author Candelaria
+ * @author Romina
  */
 public class HorarioFuncion {
     
@@ -144,7 +144,7 @@ public class HorarioFuncion {
      */
     @Override
     public String toString() {
-        // TODO implementar
+        // TODO implementar 
         StringBuilder sb = new StringBuilder();
         sb.append("Los horarios para el día: ").append(obtenerDescripcionDia())
                 .append("son: ");

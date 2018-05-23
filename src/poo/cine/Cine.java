@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  *
- * @author Candelaria
+ * @author Romina
  */
 public class Cine {
     

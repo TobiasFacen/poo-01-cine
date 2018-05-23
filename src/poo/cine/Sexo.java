@@ -7,7 +7,7 @@ package poo.cine;
 
 /**
  *
- * @author joaquinleonelrobles
+ * @author Romina
  */
 public class Sexo {
     

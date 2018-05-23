@@ -7,7 +7,7 @@ package poo.cine;
 
 /**
  *
- * @author Candelaria
+ * @author Romina
  */
 public class Calificacion {
     

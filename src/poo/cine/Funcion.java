@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *
- * @author Candelaria
+ * @author Romina
  */
 public class Funcion {
 
@@ -98,6 +98,7 @@ public class Funcion {
      * @return 
      */
     public String mostrarDiaHora() {
+        //TODO implementar
         return null;
     }
 

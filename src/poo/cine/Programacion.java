@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  *
- * @author Candelaria
+ * @author Romina
  */
 public class Programacion {
     
@@ -130,7 +130,7 @@ public class Programacion {
      * @return cadena de texto con las funciones
      */
     public String mostrarProgramacion() {
-        // TODO recorrer funciones y mostrar sus datos
+        // TODO recorrer funciones y mostrar sus datos 
         return "Falta implementar";
     }
 

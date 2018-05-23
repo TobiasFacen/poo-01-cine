@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  *
- * @author Candelaria
+ * @author Romina
  */
 public class Pelicula {
     
@@ -112,7 +112,7 @@ public class Pelicula {
      * @return 
      */
     public String mostrarFuncionesHabilitadas() {
-        // TODO implementar
+        // TODO implementar 
         return null;
     }
     
