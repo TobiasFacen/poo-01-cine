@@ -8,6 +8,7 @@ package poo.cine;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -101,8 +102,12 @@ public class Pelicula {
      * @return verdadero si está en cartelera
      */
     public boolean estaEnCartelera() {
-        // TODO completar
-        return true;
+        Programacion prog = new Programacion();
+        boolean estaEnCartelera = false;
+        if(prog.estaVigente(getFechaIngreso())){
+            estaEnCartelera = true;
+        }
+        return estaEnCartelera;
     }
     
     /**
@@ -112,8 +117,13 @@ public class Pelicula {
      * @return 
      */
     public String mostrarFuncionesHabilitadas() {
-        // TODO implementar 
-        return null;
+        Iterator<Funcion> it = funciones.iterator();
+        StringBuilder sb = new StringBuilder();
+        sb.append("Funciones hablitadas para esta pelicula: ").append("\n");
+        while(it.hasNext()){
+            sb.append(it.next()).append("\n");
+        }
+        return sb.toString();
     }
     
     /**

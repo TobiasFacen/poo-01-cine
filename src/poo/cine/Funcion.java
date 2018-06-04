@@ -8,6 +8,8 @@ package poo.cine;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /**
  *
@@ -36,7 +38,6 @@ public class Funcion {
      * 
      * @param diaSemana
      * @param duracion
-     * @param fechaHabilitacion
      * @param horaInicio
      * @param numero
      * @param pelicula
@@ -59,8 +60,9 @@ public class Funcion {
      * @return cantidad de butacas disponibles
      */
     public int calcularDisponibilidad() {
-        // TODO completar
-        return 1;
+        int disponibilidad;
+        disponibilidad = capacidadSala() - entradas.size();
+        return disponibilidad;
     }
     
     /**
@@ -69,8 +71,8 @@ public class Funcion {
      * @return cantidad total de butacas de la Sala
      */
     public int capacidadSala() {
-        // TODO implementar
-        return 0;
+        int capacidad = sala.getCapacidad();
+        return capacidad;
     }
     
     /**
@@ -78,8 +80,16 @@ public class Funcion {
      * @return 
      */
     public boolean estaEnCurso() {
-        // TODO implementar
-        return false;
+        boolean estaEnCurso = false;
+        Calendar fecha = new GregorianCalendar();
+        Calendar fecha2 = new GregorianCalendar();
+        Calendar fecha3 = new GregorianCalendar();
+        fecha2.add(Calendar.MINUTE, getDuracion());
+        fecha.setTime(getHoraInicio());
+        if(fecha3.after(fecha) && fecha3.before(fecha2)){
+            estaEnCurso = true;
+        }
+        return estaEnCurso;
     }
     
     /**
@@ -88,8 +98,11 @@ public class Funcion {
      * @return 
      */
     public boolean hayLugar() {
-        // TODO implementar
-        return true;
+        boolean hayLugar = false;
+        if(calcularDisponibilidad() > 0){
+            hayLugar = true;
+        }
+        return hayLugar;
     }
     
     /**
@@ -98,8 +111,10 @@ public class Funcion {
      * @return 
      */
     public String mostrarDiaHora() {
-        //TODO implementar
-        return null;
+        StringBuilder sb = new StringBuilder();
+        sb.append("Dia de la funcion: ").append(getDiaSemana()).append("\n");
+        sb.append("Hora de la funcion: ").append(getHoraInicio()).append("\n");
+        return sb.toString();
     }
 
     // A continuación se listan todos los métodos de seteo
@@ -168,8 +183,15 @@ public class Funcion {
      */
     @Override
     public String toString() {
-        // TODO recorrer funciones y mostrar sus datos
-        return "Datos de la función: " + "Falta de hacer";
+       StringBuilder sb = new StringBuilder();
+       sb.append("Datos de la funcion:").append("\n");
+       sb.append(mostrarDiaHora()).append("\n");
+       sb.append("Pelicula: ").append(getPelicula()).append("\n");
+       sb.append("Numero de sala: ").append(getSala().getNumero()).append("\n");
+       sb.append("Numero de funcion: ").append(getNumero()).append("\n");
+       sb.append("Duracion de la pelicula: ").append(getDuracion()).
+               append("\n");
+       return sb.toString();
     }
       
 }

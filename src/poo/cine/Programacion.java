@@ -8,6 +8,7 @@ package poo.cine;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -130,8 +131,13 @@ public class Programacion {
      * @return cadena de texto con las funciones
      */
     public String mostrarProgramacion() {
-        // TODO recorrer funciones y mostrar sus datos 
-        return "Falta implementar";
+        StringBuilder sb = new StringBuilder();
+        Iterator<Funcion> it = funciones.iterator();
+        sb.append("Programacion: ").append("\n");
+        while(it.hasNext()){
+            sb.append(it.next().toString()).append("\n");
+        }
+        return sb.toString();
     }
 
     @Override
