@@ -5,6 +5,7 @@
  */
 package poo.cine.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -24,9 +25,12 @@ public class GenerosDaoHibernateImpl implements GenerosDao {
 
     @Override
     public List<Genero> obtenerTodos() {
-        Session session = sessionFactory.openSession();
-        List<Genero> retorno = session.createQuery("from Genero").list();
-        session.close();
+        List<Genero> retorno = new ArrayList<Genero>();
+        try (Session session = sessionFactory.openSession()) {
+            retorno = session.createQuery("FROM Generos").list();
+        }catch(Exception e){
+            System.out.println("" + e.getMessage());
+        }
         
         return retorno;
     }

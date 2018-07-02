@@ -46,11 +46,13 @@ public class GestorPelicula {
         Calendar ahora = Calendar.getInstance();
         
         // creamos el cine
-        cine = new Cine("Marcelo T. de Alvear 820", ahora.getTime(), "Gran Cine", new BigDecimal(57));
+        cine = new Cine("Marcelo T. de Alvear 820", ahora.getTime(), 
+                "Gran Cine", new BigDecimal(57));
         
         // creamos las instancias de los objetos de acceso a datos
         this.generosDao = new GenerosDaoHibernateImpl(sessionFactory);
-        this.calificacionesDao = new CalificacionesDaoHibernateImpl(sessionFactory);
+        this.calificacionesDao = new CalificacionesDaoHibernateImpl
+        (sessionFactory);
         this.paisesDao = new PaisesDaoHibernateImpl(sessionFactory);
         this.peliculasDao = new PeliculasDaoHibernateImpl(sessionFactory);
     }
@@ -62,7 +64,8 @@ public class GestorPelicula {
         List<PaisDeOrigen> paises = paisesDao.obtenerTodos();
         
         // creamos una instancia del formulario y lo mostramos
-        PantallaAdministracionPelicula panel = new PantallaAdministracionPelicula(generos, calificaciones, paises, this);
+        PantallaAdministracionPelicula panel = new 
+        PantallaAdministracionPelicula(generos, calificaciones, paises, this);
         panel.setVisible(true);
     }
     
@@ -85,4 +88,5 @@ public class GestorPelicula {
     public void guardarPelicula (Pelicula pelicula) {
         peliculasDao.guardar(pelicula);
     }
+    
 }

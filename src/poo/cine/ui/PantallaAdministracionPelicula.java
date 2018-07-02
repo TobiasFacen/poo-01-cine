@@ -7,7 +7,16 @@ package poo.cine.ui;
 
 import poo.cine.controller.GestorPelicula;
 import java.awt.event.WindowEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import poo.cine.Calificacion;
 import poo.cine.Genero;
@@ -24,18 +33,32 @@ public class PantallaAdministracionPelicula extends javax.swing.JFrame {
     private final List<Genero> generos;
     private final List<Calificacion> calificaciones;
     private final List<PaisDeOrigen> paises;
-    
+    private Connection conexion;
+    private Statement sentencia;
+    private ResultSet resultado;
     private List<Personaje> personajes;
     
     private final GestorPelicula gestor;
 
-    public PantallaAdministracionPelicula(List<Genero> generos, List<Calificacion> calificaciones, List<PaisDeOrigen> paises, GestorPelicula gestor) {
+    public PantallaAdministracionPelicula(List<Genero> generos, 
+            List<Calificacion> calificaciones, List<PaisDeOrigen> paises, 
+            GestorPelicula gestor) {
         this.generos = generos;
         this.calificaciones = calificaciones;
         this.paises = paises;
         this.gestor = gestor;
+        try {
+            conexion = DriverManager.getConnection(
+                    "jdbc:mysql://127.0.0.1:3306/poo-cine", "root", "root");
+            sentencia = conexion.createStatement();
+        } catch (SQLException ex) {
+            Logger.getLogger(PantallaAdministracionPelicula.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         initComponents();
+        selGenero.removeAllItems();
+        agregarItemsAlComboBoxGenero();
+        
     }
 
     /**
@@ -110,6 +133,11 @@ public class PantallaAdministracionPelicula extends javax.swing.JFrame {
         jLabel3.setText("Calificación:");
 
         selCalificacion.setModel(new javax.swing.DefaultComboBoxModel(calificaciones.toArray()));
+        selCalificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selCalificacionActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("País de origen:");
 
@@ -156,6 +184,12 @@ public class PantallaAdministracionPelicula extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese los datos restantes"));
 
         jLabel5.setText("Duración (minutos):");
+
+        txtDuracion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDuracionActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Título original:");
 
@@ -372,9 +406,38 @@ public class PantallaAdministracionPelicula extends javax.swing.JFrame {
         // realizamos un mockup de la llamada al caso de uso "Registrar Elenco"
         personajes = gestor.obtenerElenco();
         
-        JOptionPane.showMessageDialog(null, "Se ha registrado el elenco: " + personajes.get(0));
+        for(Personaje p : personajes){
+            System.out.print("Se registro el elenco: " + p + ", ");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void txtDuracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDuracionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDuracionActionPerformed
+
+    private void selCalificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selCalificacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selCalificacionActionPerformed
+
+    private void agregarItemsAlComboBoxGenero(){
+        List<String> lista = new ArrayList<String>();
+        String q = "SELECT * FROM generos";
+        try{
+            resultado = sentencia.executeQuery(q);
+        }catch(Exception e){
+            
+        }
+        try{
+            while(resultado.next()){
+                lista.add(resultado.getString("genero"));
+            }
+        }catch(Exception e){
+        
+        }
+        for(String g : lista){
+            selGenero.addItem(g);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnConfirmar;
