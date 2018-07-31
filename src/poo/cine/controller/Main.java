@@ -9,13 +9,15 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
 
 /**
  *
  * @author joaquinleonelrobles
  */
 public class Main {
-    
+    private static ServiceRegistry serviceRegistry;
     public static void main (String[] args) {
         SessionFactory sessionFactory = null;
         
@@ -25,7 +27,8 @@ public class Main {
                     "resources/hibernate.cfg.xml").build();
 	try {
             sessionFactory = new MetadataSources( registry ).buildMetadata().buildSessionFactory();
-	}
+            
+    }
 	catch (Exception e) {
             System.out.println("Error al crear factory: " + e.getMessage());
 

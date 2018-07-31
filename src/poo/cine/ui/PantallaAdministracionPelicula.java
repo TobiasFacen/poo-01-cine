@@ -33,9 +33,6 @@ public class PantallaAdministracionPelicula extends javax.swing.JFrame {
     private final List<Genero> generos;
     private final List<Calificacion> calificaciones;
     private final List<PaisDeOrigen> paises;
-    private Connection conexion;
-    private Statement sentencia;
-    private ResultSet resultado;
     private List<Personaje> personajes;
     
     private final GestorPelicula gestor;
@@ -47,17 +44,10 @@ public class PantallaAdministracionPelicula extends javax.swing.JFrame {
         this.calificaciones = calificaciones;
         this.paises = paises;
         this.gestor = gestor;
-        try {
-            conexion = DriverManager.getConnection(
-                    "jdbc:mysql://127.0.0.1:3306/poo-cine", "root", "root");
-            sentencia = conexion.createStatement();
-        } catch (SQLException ex) {
-            Logger.getLogger(PantallaAdministracionPelicula.class.getName()).log(Level.SEVERE, null, ex);
-        }
         
         initComponents();
-        selGenero.removeAllItems();
-        agregarItemsAlComboBoxGenero();
+        
+        
         
     }
 
@@ -419,25 +409,8 @@ public class PantallaAdministracionPelicula extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_selCalificacionActionPerformed
 
-    private void agregarItemsAlComboBoxGenero(){
-        List<String> lista = new ArrayList<String>();
-        String q = "SELECT * FROM generos";
-        try{
-            resultado = sentencia.executeQuery(q);
-        }catch(Exception e){
-            
-        }
-        try{
-            while(resultado.next()){
-                lista.add(resultado.getString("genero"));
-            }
-        }catch(Exception e){
-        
-        }
-        for(String g : lista){
-            selGenero.addItem(g);
-        }
-    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnConfirmar;

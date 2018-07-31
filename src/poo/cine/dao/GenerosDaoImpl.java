@@ -34,34 +34,12 @@ public class GenerosDaoImpl implements GenerosDao {
         this.generos.add(new Genero("Terror"));
         this.generos.add(new Genero("Suspenso"));
         this.generos.add(new Genero("Ciencia Ficcion"));
-        agregarGenerosABaseDeDatos(generos);
+        
     }
 
     @Override
     public List<Genero> obtenerTodos() {
         return generos;
     }
-    private void agregarGenerosABaseDeDatos(List<Genero> generos){
-        try {
-            conexion = DriverManager.getConnection(
-                    "jdbc:mysql://127.0.0.1:3306/poo-cine", "root", "root");
-            sentencia = conexion.createStatement();
-        } catch (SQLException ex) {
-            Logger.getLogger(PantallaAdministracionPelicula.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-                sentencia.executeUpdate("CREATE TABLE IF NOT EXISTS 'poo-cine'.'Generos'('genero' TEXT NULL)");
-                
-            } catch (SQLException ex) {
-                Logger.getLogger(GenerosDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        for(Genero g : generos){
-            String cadena = g.getNombre();
-            try {
-                sentencia.executeUpdate("ALTER TABLE 'poo-cine'.'Generos' INSERT INTO 'genero' VALUES (cadena)");
-                        } catch (SQLException ex) {
-                Logger.getLogger(GenerosDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }
+    
 }

@@ -61,43 +61,5 @@ public class PeliculasDaoHibernateImpl implements PeliculasDao {
         session.getTransaction().commit();
         session.close();
     }
-    private void agregarPeliculasABaseDeDatos(List<Pelicula> peliculas){
-        try {
-                sentencia.executeUpdate("CREATE TABLE IF NOT EXISTS"
-                        + "'poo-cine'.'Peliculas'('nombre' LONGTEXT, "
-                        + "'genero' LONGTEXT, 'titulo_original' LONGTEXT, "
-                        + "'año_estreno' YEAR, 'duracion' INT, "
-                        + "'calificacion' LONGTEXT, 'pais_de_origen' LONGTEXT,"
-                        + " 'personajes' LONGTEXT PRIMARY KEY ('nombre') NULL");
-                
-            } catch (SQLException ex) {
-                Logger.getLogger(GenerosDaoImpl.class.getName())
-                        .log(Level.SEVERE, null, ex);
-            }
-        for(Pelicula p : peliculas){
-            String nombre = p.getNombre();
-            Genero genero = p.getGenero();
-            String titulo_original = p.getTituloOriginal();
-            int anio_estreno = p.getAnioEstreno();
-            int duracion = p.getDuracion();
-            String calificacion = p.getCalificacion().getNombre();
-            String pais_de_origen = p.getPaisDeOrigen().getNombre();
-            List<Personaje> personajes = p.getPersonajes();
-            for(Personaje pe : personajes){
-                String personaje = pe.getNombreEnPelicula();
-                try {
-                    sentencia.executeUpdate("ALTER TABLE 'poo-cine'.'Peliculas'"
-                            + "INSERT INTO ('nombre', 'genero', "
-                            + "'titulo_original', 'año_estreno', 'duracion', "
-                            + "'calificacion', 'pais_de_origen', 'personajes')"
-                            + "VALUES (nombre, genero, titulo_original, "
-                            + "anio_estreno, duracion, calificacion, "
-                            + "pais_de_origen, personajes)");
-                            } catch (SQLException ex) {
-                    Logger.getLogger(PeliculasDaoHibernateImpl.class.getName())
-                            .log(Level.SEVERE, null, ex);
-                }
-            }
-        }
-    }
+    
 }

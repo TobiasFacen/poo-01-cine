@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-  <class name="poo.cine.Pelicula" table="Pelicula">
-      <id name="id" column="id_pelicula" type="int">
+  <class name="poo.cine.Pelicula" table="pelicula">
+      <id name="id" column="idpelicula" type="int">
           <generator class="increment" />
       </id>
       
@@ -13,9 +13,9 @@
       <property name="fechaIngreso" column="fecha_ingreso" type="java.util.Date" />
       <property name="tituloOriginal" column="titulo_original" />
       
-      <many-to-one name="paisDeOrigen" class="poo.cine.PaisDeOrigen" column="id_pais_de_origen"></many-to-one>
-      <many-to-one name="genero" class="poo.cine.Genero" column="id_genero"></many-to-one>
-      <many-to-one name="calificacion" class="poo.cine.Calificacion" column="id_calificacion"></many-to-one>
+      <many-to-one name="paisDeOrigen" class="poo.cine.PaisDeOrigen" column="idpais"></many-to-one>
+      <many-to-one name="genero" class="poo.cine.Genero" column="idgenero"></many-to-one>
+      <many-to-one name="calificacion" class="poo.cine.Calificacion" column="idcalificacion"></many-to-one>
       
   </class>
 </hibernate-mapping>
